@@ -233,14 +233,85 @@
     font-size: 12px; color: var(--text-tertiary); text-align: center;
   }
 
+  .auth-gate {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at 10% 10%, rgba(127, 119, 221, 0.15), transparent 40%), var(--bg);
+  }
+  .auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+  .auth-card h2 { font-size: 22px; margin-bottom: 8px; }
+  .auth-card p { color: var(--text-secondary); font-size: 13px; margin-bottom: 18px; }
+  .auth-field { margin-bottom: 12px; }
+  .auth-field label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+  .auth-field input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 0 12px;
+    font-size: 14px;
+  }
+  .auth-btn {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: var(--teal-600);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .auth-error {
+    min-height: 18px;
+    color: #C53030;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  body.locked #dashboardContent { display: none; }
+  body.unlocked #authGate { display: none; }
+
   @media print {
     body { background: white; }
     .card, .summary-box, .infra-item, .channel-item { break-inside: avoid; }
   }
 </style>
 </head>
-<body>
-<div class="container">
+<body class="locked">
+<div id="authGate" class="auth-gate">
+  <div class="auth-card">
+    <h2>Obita 周报登录</h2>
+    <p>请输入账号密码后查看看板内容</p>
+    <form id="loginForm">
+      <div class="auth-field">
+        <label for="username">用户名</label>
+        <input id="username" name="username" type="text" autocomplete="username" required>
+      </div>
+      <div class="auth-field">
+        <label for="password">密码</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button class="auth-btn" type="submit">登录</button>
+      <div id="authError" class="auth-error" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
+<div id="dashboardContent" class="container">
 
 <div class="header">
 <h1>Obita 产品进展看板</h1>
@@ -702,5 +773,34 @@ Obita 产品进展看板 · 周会同步版本
 </div>
 
 </div>
+<script>
+  (function () {
+    var body = document.body;
+    var form = document.getElementById('loginForm');
+    var error = document.getElementById('authError');
+    var USERNAME = 'weeklyupdate';
+    var PASSWORD = 'nancyzuibang';
+    var TOKEN_KEY = 'obita_dashboard_logged_in';
+
+    if (window.sessionStorage.getItem(TOKEN_KEY) === '1') {
+      body.classList.remove('locked');
+      body.classList.add('unlocked');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var username = document.getElementById('username').value.trim();
+      var password = document.getElementById('password').value;
+      if (username === USERNAME && password === PASSWORD) {
+        window.sessionStorage.setItem(TOKEN_KEY, '1');
+        body.classList.remove('locked');
+        body.classList.add('unlocked');
+        error.textContent = '';
+        return;
+      }
+      error.textContent = '用户名或密码错误，请重试。';
+    });
+  })();
+</script>
 </body>
 </html>
