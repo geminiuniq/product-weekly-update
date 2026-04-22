@@ -117,12 +117,12 @@
   }
   .step-dot {
     width: 14px; height: 14px; border-radius: 50%;
-    background: var(--gray-100); border: 2px solid var(--bg-card);
+    background: var(--amber-200); border: 2px solid var(--bg-card);
   }
   .step-dot.done { background: var(--teal-600); }
-  .step-dot.active { background: var(--amber-200); }
-  .step-dot.integrating { background: var(--blue-400); }
-  .step-dot.waiting { background: var(--purple-400); }
+  .step-dot.active { background: var(--teal-600); }
+  .step-dot.integrating { background: var(--teal-600); }
+  .step-dot.waiting { background: var(--amber-200); }
   .step-label { font-size: 11px; color: var(--text-tertiary); white-space: nowrap; }
 
   .pitch { margin-top: 12px; padding: 12px 14px; border-radius: 8px; font-size: 13px; }
@@ -351,7 +351,7 @@
 <span class="legend-pill status-dev">开发中</span>
 <span class="legend-pill status-integrating">联调中</span>
 <span class="legend-pill status-pending">等待对接</span>
-<span class="legend-desc">标准阶段:需求 → PRD → 开发 → 上线 → 可展业(仅稳定币 Payout / Checkout 含 API 联调)</span>
+<span class="legend-desc">标准阶段:需求 → PRD → 开发 → 上线 → 风控合规法务确认 → 可展业(仅稳定币 Payout / Checkout 含 API 联调)</span>
 </div>
 
 <!-- 板块一:业务支付产品 -->
@@ -369,6 +369,7 @@
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">开发</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">风控合规法务确认</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">可展业</div></div>
 </div>
 </div>
@@ -389,8 +390,9 @@
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">可展业</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 <span class="card-badge status-dev">4月底上线(配合手动流程)</span>
 </div>
@@ -401,8 +403,9 @@
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">可展业</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 <span class="card-badge status-dev">4月底上线</span>
 </div>
@@ -424,10 +427,11 @@
 <div class="pipeline-steps">
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">API就绪</div></div>
-<div class="pipeline-step"><div class="step-dot integrating"></div><div class="step-label">联调</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">API就绪</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">联调</div></div>
 <div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
 <div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 </div>
@@ -448,7 +452,8 @@
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
 <div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 </div>
@@ -468,10 +473,11 @@
 <div class="sub-line-name">Invoice(开票收款)</div>
 <div class="pipeline-steps">
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">可展业</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 <span class="card-badge status-dev">6月中上线</span>
 </div>
@@ -482,15 +488,17 @@
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">联调</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">可展业</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">联调</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 <span class="card-badge status-dev">4月底上线</span>
 </div>
 
 <div class="pitch amber">
 <div class="pitch-line"><span class="pitch-label">对外口径:</span>Checkout 4 月底上线,Invoice 6 月中上线。</div>
+<div class="pitch-line"><span class="pitch-label">状态:</span>Invoice 当前在开发阶段,因资源和优先级调整,5 月继续推进。</div>
 <div class="pitch-line"><span class="pitch-label">口径建议:</span>短期客户优先推 Checkout;需开票场景可锁单 6 月。</div>
 <div class="pitch-line">两种方案可作为互补的产品组合向客户介绍。</div>
 </div>
@@ -505,14 +513,15 @@
 <div class="pipeline-row">
 <div class="pipeline-steps">
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">可展业</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 </div>
 <div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>ObitaPocket 预计 6 月可展业。</div>
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>ObitaPocket 当前在开发阶段,因资源和优先级调整暂停。</div>
 </div>
 </div>
 
@@ -524,11 +533,12 @@
 </div>
 <div class="pipeline-row">
 <div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">可展业</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 </div>
 <div class="pitch amber">
@@ -550,6 +560,7 @@
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">开发</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">风控合规法务确认</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">可展业</div></div>
 </div>
 <span class="card-badge status-live">已可展业</span>
@@ -561,8 +572,9 @@
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
 <div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
 <div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">可展业</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
 </div>
 <span class="card-badge status-dev">4月底上线</span>
 </div>
@@ -570,6 +582,28 @@
 <div class="pitch teal">
 <div class="pitch-line"><span class="pitch-label">对外口径:</span>USDT/USDC → USD 兑换能力已可展业。</div>
 <div class="pitch-line"><span class="pitch-label">产品升级:</span>RFQ 询价与成交链路重构中,4 月底上线,报价效率与执行质量提升。</div>
+</div>
+</div>
+
+<!-- ⑨ Merchant Portal V2 -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">⑨ Merchant Portal V2</div>
+<span class="card-badge status-dev">计划6月上线</span>
+</div>
+<div class="pipeline-row">
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+</div>
+<div class="pitch blue">
+<div class="pitch-line"><span class="pitch-label">当前阶段:</span>PRD 阶段。</div>
+<div class="pitch-line"><span class="pitch-label">计划:</span>6 月上线。</div>
 </div>
 </div>
 
@@ -682,11 +716,11 @@
 <div class="channel-item purple">
 <div class="channel-header">
 <div class="channel-name">Velafi</div>
-<span class="card-badge status-pending">规划中</span>
+<span class="card-badge status-pending">等待对接</span>
 </div>
 <div class="channel-info">
-<div>用途:Conversion LP</div>
-<div>状态:规划中</div>
+<div>用途:兑换LP</div>
+<div>状态:等待对接</div>
 </div>
 </div>
 
