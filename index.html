@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Obita 产品进展看板</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #FAFAF7;
@@ -52,25 +53,41 @@
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: var(--bg);
+    font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    background:
+      radial-gradient(circle at 10% -20%, rgba(55, 138, 221, 0.12), transparent 35%),
+      radial-gradient(circle at 95% 10%, rgba(127, 119, 221, 0.1), transparent 28%),
+      var(--bg);
     color: var(--text-primary);
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
 
-  .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px 64px; }
-  .header { margin-bottom: 24px; }
-  .header h1 { font-size: 24px; font-weight: 600; margin-bottom: 6px; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 36px 28px 72px; }
+  .header {
+    margin-bottom: 24px;
+    padding: 14px 2px 10px 14px;
+    border-left: 4px solid rgba(55, 138, 221, 0.4);
+  }
+  .header h1 {
+    font-family: "Outfit", "Noto Sans SC", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+  }
   .header .meta { font-size: 13px; color: var(--text-tertiary); }
 
   .legend {
     display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
     margin-bottom: 28px; padding: 12px 16px;
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
   }
-  .legend-pill { padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+  .legend-pill { padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
   .legend-desc { font-size: 12px; color: var(--text-secondary); margin-left: auto; }
 
   .status-live { background: #9FE1CB; color: #04342C; }
@@ -79,8 +96,10 @@
   .status-pending { background: #AFA9EC; color: #26215C; }
 
   .section-header {
-    padding: 10px 16px; border-radius: 8px; margin: 28px 0 16px;
-    font-size: 15px; font-weight: 600;
+    padding: 12px 16px; border-radius: 12px; margin: 30px 0 14px;
+    font-size: 18px; font-weight: 700;
+    font-family: "Outfit", "Noto Sans SC", sans-serif;
+    letter-spacing: 0.2px;
   }
   .section-header.sec-1 { background: var(--purple-50); color: var(--purple-900); }
   .section-header.sec-2 { background: var(--pink-50); color: var(--pink-900); }
@@ -90,17 +109,37 @@
     .section-header.sec-1 { background: rgba(127, 119, 221, 0.2); color: #CECBF6; }
     .section-header.sec-2 { background: rgba(212, 83, 126, 0.2); color: #F4C0D1; }
     .section-header.sec-3 { background: rgba(55, 138, 221, 0.2); color: #B5D4F4; }
+    .header { border-left-color: rgba(129, 196, 255, 0.48); }
+    .legend {
+      background: rgba(36, 36, 34, 0.78);
+      border-color: rgba(255,255,255,0.08);
+    }
+    .card {
+      background: rgba(36, 36, 34, 0.84);
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+    }
   }
 
   .card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
-    padding: 20px 24px; margin-bottom: 14px;
+    background: rgba(255,255,255,0.86);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 24px rgba(18, 31, 55, 0.06);
+    backdrop-filter: blur(4px);
   }
   .card-header {
     display: flex; align-items: center; justify-content: space-between;
     gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
   }
-  .card-title { font-size: 15px; font-weight: 600; }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Outfit", "Noto Sans SC", sans-serif;
+    letter-spacing: 0.2px;
+  }
   .card-badge { padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 500; white-space: nowrap; }
 
   .pipeline-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -167,10 +206,56 @@
   .channel-item.teal { background: var(--teal-50); border: 1px solid rgba(15, 110, 86, 0.2); }
   .channel-item.amber { background: var(--amber-50); border: 1px solid rgba(186, 117, 23, 0.2); }
   .channel-item.purple { background: var(--purple-50); border: 1px solid rgba(83, 74, 183, 0.2); }
+  .channel-item.focus {
+    border-width: 2px;
+    box-shadow: 0 0 0 2px rgba(239, 159, 39, 0.18), 0 10px 22px rgba(45, 54, 78, 0.1);
+    position: relative;
+  }
+  .channel-board {
+    border: 1.5px solid rgba(55, 138, 221, 0.28);
+    box-shadow: 0 12px 28px rgba(20, 46, 82, 0.1);
+    background:
+      linear-gradient(180deg, rgba(55, 138, 221, 0.06), rgba(255,255,255,0)) ,
+      rgba(255,255,255,0.9);
+  }
+  .channel-board .grid { gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .channel-board .channel-header { align-items: flex-start; gap: 10px; }
+  .channel-board .channel-header .card-badge { margin-left: auto; }
+  .channel-board .channel-item.focus { padding-top: 34px; }
+  .channel-board .channel-item.focus::after {
+    content: '高优先级';
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(239, 159, 39, 0.2);
+    color: var(--amber-900);
+    border: 1px solid rgba(186, 117, 23, 0.35);
+  }
+  .channel-board .channel-item.no-corner-tag { padding-top: 14px; }
+  .channel-board .channel-item.no-corner-tag::after { content: none; }
   @media (prefers-color-scheme: dark) {
     .channel-item.teal { background: rgba(15, 110, 86, 0.2); border-color: rgba(29, 158, 117, 0.3); }
     .channel-item.amber { background: rgba(186, 117, 23, 0.2); border-color: rgba(239, 159, 39, 0.3); }
     .channel-item.purple { background: rgba(83, 74, 183, 0.2); border-color: rgba(127, 119, 221, 0.3); }
+    .channel-board {
+      background:
+        linear-gradient(180deg, rgba(55, 138, 221, 0.1), rgba(36, 36, 34, 0.92)),
+        rgba(36, 36, 34, 0.92);
+      border-color: rgba(105, 168, 245, 0.38);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.38);
+    }
+    .channel-item.focus {
+      box-shadow: 0 0 0 2px rgba(239, 159, 39, 0.32), 0 12px 24px rgba(0, 0, 0, 0.36);
+    }
+    .channel-board .channel-item.focus::after {
+      background: rgba(239, 159, 39, 0.24);
+      color: #FFE2BF;
+      border-color: rgba(239, 159, 39, 0.48);
+    }
   }
   .channel-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
   .channel-name { font-size: 15px; font-weight: 600; }
@@ -186,10 +271,55 @@
   .channel-item.teal .channel-info { color: var(--teal-800); }
   .channel-item.amber .channel-info { color: var(--amber-800); }
   .channel-item.purple .channel-info { color: var(--purple-800); }
+  .channel-kv {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+    margin-top: 2px;
+  }
+  .channel-kv:first-child { margin-top: 0; }
+  .channel-kv .k {
+    min-width: 58px;
+    font-weight: 600;
+    opacity: 0.86;
+  }
+  .channel-kv .v { flex: 1; }
+  .channel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .channel-mini-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(55, 138, 221, 0.12);
+    border: 1px solid rgba(55, 138, 221, 0.28);
+    color: var(--blue-900);
+  }
+  .channel-mini-tag.key {
+    background: rgba(239, 159, 39, 0.16);
+    border-color: rgba(186, 117, 23, 0.36);
+    color: var(--amber-900);
+  }
   @media (prefers-color-scheme: dark) {
     .channel-item.teal .channel-info { color: #9FE1CB; }
     .channel-item.amber .channel-info { color: #FAC775; }
     .channel-item.purple .channel-info { color: #CECBF6; }
+    .channel-mini-tag {
+      background: rgba(55, 138, 221, 0.24);
+      border-color: rgba(95, 167, 240, 0.5);
+      color: #D3EBFF;
+    }
+    .channel-mini-tag.key {
+      background: rgba(239, 159, 39, 0.24);
+      border-color: rgba(239, 159, 39, 0.52);
+      color: #FFE2BF;
+    }
   }
   .merchant-tag-block { margin-top: 6px; }
   .merchant-tag-label {
@@ -211,11 +341,22 @@
     color: var(--blue-900);
     white-space: nowrap;
   }
+  .merchant-tag.key {
+    background: #FFE9C7;
+    border-color: rgba(186, 117, 23, 0.35);
+    color: #5A3507;
+    font-weight: 700;
+  }
   @media (prefers-color-scheme: dark) {
     .merchant-tag {
       background: rgba(55, 138, 221, 0.2);
       border-color: rgba(55, 138, 221, 0.35);
       color: #B5D4F4;
+    }
+    .merchant-tag.key {
+      background: rgba(239, 159, 39, 0.28);
+      border-color: rgba(239, 159, 39, 0.52);
+      color: #FFE2BF;
     }
   }
 
@@ -254,6 +395,189 @@
     .summary-box.risk li { color: #FAC775; }
   }
   .summary-box li .sub { display: block; color: var(--text-tertiary); font-size: 12px; padding-left: 0; }
+  .release-tag {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--blue-50);
+    color: var(--blue-900);
+    border: 1px solid rgba(55, 138, 221, 0.25);
+    vertical-align: middle;
+  }
+  .ceo-note {
+    background: #E5E8ED;
+    border: 2px solid #C9CBEF;
+    border-left: 6px solid #7B73D5;
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 22px;
+  }
+  .ceo-note .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #36347E;
+    margin-bottom: 8px;
+  }
+  .ceo-note .desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #2F2F3C;
+  }
+  .ceo-note .desc strong { color: #1F206A; }
+  .release-head {
+    margin: 8px 0 14px;
+    background: #DCDCF0;
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #23256F;
+    font-family: "Outfit", "Noto Sans SC", sans-serif;
+  }
+  .release-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .release-item {
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 2px solid transparent;
+  }
+  .release-item.green { background: #D2E7E3; border-color: #ABD2C9; }
+  .release-item.amber { background: #EFE2CC; border-color: #E2CDAF; }
+  .release-item.purple { background: #DDDCEF; border-color: #C2C0E8; }
+  .release-item .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .release-item h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #344256;
+  }
+  .release-item .eta {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 700;
+    color: #113D3A;
+  }
+  .release-item.amber .eta { color: #3D2610; }
+  .release-item.purple .eta { color: #2F2C73; }
+  .release-item ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .release-item li {
+    font-size: 13px;
+    line-height: 1.45;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.45);
+    color: #1B564B;
+  }
+  .release-item.amber li { color: #6B421E; }
+  .release-item.purple li { color: #31307C; }
+  .release-item .meta-line {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #6C7885;
+    font-style: italic;
+  }
+  @media (max-width: 960px) {
+    .release-grid { grid-template-columns: 1fr; }
+    .release-item .eta { font-size: 22px; }
+  }
+  @media (prefers-color-scheme: dark) {
+    .release-tag {
+      background: rgba(55, 138, 221, 0.2);
+      color: #B5D4F4;
+      border-color: rgba(55, 138, 221, 0.35);
+    }
+    .ceo-note {
+      background: rgba(90, 95, 120, 0.35);
+      border-color: rgba(170, 173, 220, 0.45);
+      border-left-color: #9D97E9;
+    }
+    .ceo-note .title { color: #CFCCFF; }
+    .ceo-note .desc { color: #E0DFEE; }
+    .ceo-note .desc strong { color: #CFCBFF; }
+    .release-head { background: rgba(99, 104, 157, 0.35); color: #CFCBFF; }
+    .release-item.green { background: rgba(95, 145, 130, 0.22); border-color: rgba(141, 205, 185, 0.35); }
+    .release-item.amber { background: rgba(145, 112, 65, 0.24); border-color: rgba(224, 183, 128, 0.35); }
+    .release-item.purple { background: rgba(94, 90, 156, 0.24); border-color: rgba(176, 170, 233, 0.35); }
+    .release-item h3 { color: #E4E8EF; }
+    .release-item .eta { color: #D4F0E4; }
+    .release-item.amber .eta { color: #F8D8B5; }
+    .release-item.purple .eta { color: #D7D2FF; }
+    .release-item li { background: rgba(255,255,255,0.08); color: #D7F2E9; }
+    .release-item.amber li { color: #FFE2BF; }
+    .release-item.purple li { color: #E3E0FF; }
+    .release-item .meta-line { color: #B8BDC9; }
+  }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background:
+        radial-gradient(circle at 12% -12%, rgba(83, 141, 214, 0.24), transparent 34%),
+        radial-gradient(circle at 88% 0%, rgba(140, 123, 214, 0.2), transparent 30%),
+        #14151A;
+    }
+    .header h1 { color: #F1F3FF; }
+    .header .meta { color: #B8BACA; }
+    .legend-desc { color: #C1C4D4; }
+    .card-title { color: #E9ECF8; }
+    .sub-line-name { color: #E4E7F4; }
+    .step-label { color: #C9CFE3; }
+    .card-badge { color: #F4F7FF; }
+
+    .legend-pill { border: 1px solid rgba(255,255,255,0.14); }
+    .status-live { background: rgba(35, 175, 126, 0.24); color: #B8F5DE; }
+    .status-dev { background: rgba(223, 160, 57, 0.22); color: #FFE1AE; }
+    .status-integrating { background: rgba(70, 143, 224, 0.24); color: #C9E6FF; }
+    .status-pending { background: rgba(140, 123, 214, 0.24); color: #DFD8FF; }
+
+    .pipeline-steps::before { background: rgba(255,255,255,0.14); }
+    .step-dot {
+      border-color: rgba(20, 21, 26, 0.88);
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.04);
+    }
+
+    .pitch.teal { background: rgba(29, 158, 117, 0.2); color: #B7F0DB; }
+    .pitch.amber { background: rgba(239, 159, 39, 0.2); color: #FFDEAB; }
+    .pitch.blue { background: rgba(55, 138, 221, 0.22); color: #CAE5FF; }
+    .pitch .pitch-label { color: #F4F7FF; }
+
+    .merchant-tag-label { color: #C4CADB; }
+    .release-tag {
+      background: rgba(72, 154, 232, 0.24);
+      color: #D3EBFF;
+      border-color: rgba(126, 186, 243, 0.45);
+    }
+    .summary-box li .sub { color: #AAB0C4; }
+    .release-item .top { align-items: center; }
+
+    .auth-card {
+      background: rgba(30, 32, 40, 0.94);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.42);
+    }
+    .auth-field input {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.14);
+      color: #EEF1FF;
+    }
+    .auth-field input:focus {
+      outline: 2px solid rgba(104, 171, 241, 0.55);
+      outline-offset: 1px;
+    }
+    .auth-btn {
+      background: linear-gradient(135deg, #12735A 0%, #1E8E72 100%);
+      color: #F6FFFC;
+    }
+  }
 
   .footer {
     margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border);
@@ -354,381 +678,52 @@
 <span class="legend-desc">标准阶段:需求 → PRD → 开发 → 上线 → 风控合规法务确认 → 可展业(仅稳定币 Payout / Checkout 含 API 联调)</span>
 </div>
 
-<!-- 板块一:业务支付产品 -->
-<div class="section-header sec-1">板块一 · 业务支付产品(对客)</div>
-
-<!-- ① 统一账户 — 稳定币充提 (无联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">① 统一账户 — 稳定币充提</div>
-<span class="card-badge status-live">已可展业</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch teal">
-<span class="pitch-label">对外口径:</span>稳定币充值/提现能力已上线,销售/BD 可直接对客签约。
+<div class="ceo-note">
+<div class="title">CEO 指引 · 当前阶段</div>
+<div class="desc">
+4/30 已奠定产品技术架构基础。<strong>当前处于 PMF（产品市场适配）阶段，需要快速产品迭代</strong>，平台建设适度克制，业务产品建设要激进。接下来每次发布都要产生对业务<strong>有明确新增支持</strong>的产品，产品和技术优先级紧盯业务。
 </div>
 </div>
 
-<!-- ② 统一账户 — 法币充提 (无联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">② 统一账户 — 法币充提</div>
+<div class="release-head">接下来三次发布计划</div>
+<div class="release-grid">
+<div class="release-item green">
+<div class="top">
+<h3>第一次发布</h3>
+<div class="eta">5/6 左右</div>
 </div>
-
-<div class="sub-line">
-<div class="sub-line-name">法币充值(SGB)</div>
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+<ul>
+<li>OTC 迁移完成,业务现状可用（充值 → 兑换 → 提现）</li>
+<li>稳定币 Payout 业务完整可用</li>
+<li>稳定币 Checkout 业务完整可用</li>
+</ul>
+<div class="meta-line">原 4/30 目标推迟约一周</div>
 </div>
-<span class="card-badge status-dev">4月底上线(配合手动流程)</span>
+<div class="release-item amber">
+<div class="top">
+<h3>第二次发布</h3>
 </div>
-
-<div class="sub-line">
-<div class="sub-line-name">法币提现</div>
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+<ul>
+<li>SGB Support VA账户创建、法币同名充值、法币同名提现（5/15）</li>
+<li>Payout 增加法币渠道 Navro,业务可用（暂定5/15）</li>
+<li>数币 Invoice 业务可用（暂定5/15）</li>
+</ul>
+<div class="meta-line">本期按 5/15 里程碑推进，未完成项暂定顺延</div>
 </div>
-<span class="card-badge status-dev">4月底上线</span>
+<div class="release-item purple">
+<div class="top">
+<h3>第三次发布</h3>
 </div>
-
-<div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>法币充值(SGB)与法币提现 4 月底上线,充值上线初期配合手动流程。</div>
-<div class="pitch-line"><span class="pitch-label">口径建议:</span>对意向客户可锁单 5 月档期交付。</div>
-<div class="pitch-line">SGB 渠道对接进度见板块三。</div>
+<ul>
+<li>端到端付款业务上线：小币种收款 → 香港稳定币 offramp（暂定5月底）</li>
+<li>渠道对接Velafi（暂定5月底）</li>
+</ul>
+<div class="meta-line">目标 5 月底前完成首版本</div>
 </div>
 </div>
 
-<!-- ③ Payout — 稳定币 (保留联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">③ Payout — 稳定币</div>
-<span class="card-badge status-integrating">联调中 · PalmPay</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">API就绪</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">联调</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch blue">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>稳定币 Payout API 已就绪,已对接 PalmPay 客户可直接使用。</div>
-<div class="pitch-line"><span class="pitch-label">风险:</span>依赖 PalmPay 集成排期(见板块四)。</div>
-</div>
-</div>
-
-<!-- ④ Payout — 法币 (无联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">④ Payout — 法币</div>
-<span class="card-badge status-dev">5月可展业</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>法币 Payout 5 月可对客展业,经 Navro 渠道出款。</div>
-<div class="pitch-line">Navro 渠道 4 月系统上线,5 月进入可展业状态。</div>
-</div>
-</div>
-
-<!-- ⑤ Collection — 稳定币收款 (Invoice 无联调, Checkout 有联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">⑤ Collection — 稳定币收款</div>
-</div>
-
-<div class="sub-line">
-<div class="sub-line-name">Invoice(开票收款)</div>
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-<span class="card-badge status-dev">6月中上线</span>
-</div>
-
-<div class="sub-line">
-<div class="sub-line-name">Checkout 收银台</div>
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">联调</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-<span class="card-badge status-dev">4月底上线</span>
-</div>
-
-<div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>Checkout 4 月底上线,Invoice 6 月中上线。</div>
-<div class="pitch-line"><span class="pitch-label">状态:</span>Invoice 当前在开发阶段,因资源和优先级调整,5 月继续推进。</div>
-<div class="pitch-line"><span class="pitch-label">口径建议:</span>短期客户优先推 Checkout;需开票场景可锁单 6 月。</div>
-<div class="pitch-line">两种方案可作为互补的产品组合向客户介绍。</div>
-</div>
-</div>
-
-<!-- ⑥ ObitaPocket (无联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">⑥ ObitaPocket</div>
-<span class="card-badge status-dev">6月可展业</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>ObitaPocket 当前在开发阶段,因资源和优先级调整暂停。</div>
-</div>
-</div>
-
-<!-- ⑦ U 卡 (无联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">⑦ U 卡</div>
-<span class="card-badge status-dev">6月上线</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>U 卡计划 6 月系统上线。</div>
-<div class="pitch-line">对接的 Wirex 渠道 6 月系统上线(见板块三)。</div>
-</div>
-</div>
-
-<!-- ⑧ Conversion -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">⑧ Conversion — 币种兑换</div>
-</div>
-
-<div class="sub-line">
-<div class="sub-line-name">稳定币 → 法币(USDT/USDC → USD)</div>
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">可展业</div></div>
-</div>
-<span class="card-badge status-live">已可展业</span>
-</div>
-
-<div class="sub-line">
-<div class="sub-line-name">产品升级:RFQ 重构</div>
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-<span class="card-badge status-dev">4月底上线</span>
-</div>
-
-<div class="pitch teal">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>USDT/USDC → USD 兑换能力已可展业。</div>
-<div class="pitch-line"><span class="pitch-label">产品升级:</span>RFQ 询价与成交链路重构中,4 月底上线,报价效率与执行质量提升。</div>
-</div>
-</div>
-
-<!-- ⑨ Merchant Portal V2 -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">⑨ Merchant Portal V2</div>
-<span class="card-badge status-dev">计划6月上线</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch blue">
-<div class="pitch-line"><span class="pitch-label">当前阶段:</span>PRD 阶段。</div>
-<div class="pitch-line"><span class="pitch-label">计划:</span>6 月上线。</div>
-</div>
-</div>
-
-<!-- 板块二:基建能力 -->
-<div class="section-header sec-2">板块二 · 基建能力(对内)</div>
-
-<div class="card">
-<div class="card-header">
-<div class="card-title">基建能力 · 7 条主线</div>
-</div>
-<div class="grid">
-<div class="infra-item">
-<div class="name">账务系统</div>
-<span class="card-badge status-dev">4月底上线</span>
-</div>
-<div class="infra-item">
-<div class="name">金融交换</div>
-<span class="card-badge status-dev">4月底上线</span>
-</div>
-<div class="infra-item">
-<div class="name">支付核心</div>
-<span class="card-badge status-dev">4月底上线</span>
-</div>
-<div class="infra-item">
-<div class="name">风控系统</div>
-<span class="card-badge status-dev">4月底上线</span>
-</div>
-<div class="infra-item">
-<div class="name">渠道对账与清结算</div>
-<span class="card-badge status-integrating">5月上线</span>
-</div>
-<div class="infra-item">
-<div class="name">两码一号改造</div>
-<span class="card-badge status-integrating">5月完成</span>
-</div>
-<div class="infra-item">
-<div class="name">会员域</div>
-<span class="card-badge status-pending">5月启动并上线</span>
-</div>
-</div>
-</div>
-
-<!-- 板块三:渠道对接 -->
-<div class="section-header sec-3">板块三 · 渠道对接</div>
-
-<div class="card">
-<div class="card-header">
-<div class="card-title">支撑业务能力落地的外部渠道</div>
-</div>
-<div class="grid">
-
-<div class="channel-item amber">
-<div class="channel-header">
-<div class="channel-name">Navro</div>
-<span class="card-badge status-dev">4月系统上线</span>
-</div>
-<div class="channel-info">
-<div>用途:法币 Payout 出金</div>
-<div>状态:渠道对接中</div>
-<div>影响:能力 ④ 5 月可展业</div>
-</div>
-</div>
-
-<div class="channel-item amber">
-<div class="channel-header">
-<div class="channel-name">SGB</div>
-<span class="card-badge status-dev">对接中</span>
-</div>
-<div class="channel-info">
-<div>用途:法币充值</div>
-<div>状态:渠道对接中</div>
-<div>影响:能力 ② 4 月底上线</div>
-</div>
-</div>
-
-<div class="channel-item amber">
-<div class="channel-header">
-<div class="channel-name">Wirex</div>
-<span class="card-badge status-dev">6月系统上线</span>
-</div>
-<div class="channel-info">
-<div>用途:U 卡发卡</div>
-<div>状态:渠道对接中</div>
-<div>影响:能力 ⑦ 6 月上线</div>
-</div>
-</div>
-
-<div class="channel-item purple">
-<div class="channel-header">
-<div class="channel-name">OSL</div>
-<span class="card-badge status-pending">等待对接</span>
-</div>
-<div class="channel-info">
-<div>用途:数币托管</div>
-<div>状态:等待对接启动</div>
-</div>
-</div>
-
-<div class="channel-item purple">
-<div class="channel-header">
-<div class="channel-name">Hashkey</div>
-<span class="card-badge status-pending">等待对接</span>
-</div>
-<div class="channel-info">
-<div>用途:数币托管</div>
-<div>状态:等待对接启动</div>
-</div>
-</div>
-
-<div class="channel-item purple">
-<div class="channel-header">
-<div class="channel-name">Velafi</div>
-<span class="card-badge status-pending">等待对接</span>
-</div>
-<div class="channel-info">
-<div>用途:兑换LP</div>
-<div>状态:等待对接</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- 板块四:服务商户 -->
-<div class="section-header sec-3">板块四 · 服务商户</div>
+<!-- 板块一:服务商户 -->
+<div class="section-header sec-3">板块一 · 服务商户</div>
 
 <div class="card">
 <div class="grid">
@@ -807,6 +802,412 @@
 </div>
 </div>
 
+<div class="channel-item teal focus">
+<div class="channel-header">
+<div class="channel-name">汇金（MAIZHENG）</div>
+<span class="card-badge status-pending">规划中</span>
+</div>
+<div class="channel-info">
+<div class="merchant-tag-block">
+<span class="merchant-tag-label">能力</span>
+<div class="merchant-tags">
+<span class="merchant-tag">稳定币收款</span>
+<span class="merchant-tag">Offramp</span>
+<span class="merchant-tag key">全API对接（重点）</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- 板块二:业务支付产品 -->
+<div class="section-header sec-1">板块二 · 业务支付产品(对客)</div>
+
+<!-- ① 统一账户（稳定币+法币） -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">① 统一账户 <span class="release-tag">R1 / R2</span></div>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">稳定币充提</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-live">已可展业</span>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">法币充值(SGB)</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">4月底上线(配合手动流程)</span>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">法币提现</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">4月底上线</span>
+</div>
+
+<div class="pitch amber">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>稳定币充值/提现能力已上线,销售/BD 可直接对客签约；法币充值(SGB)与法币提现 4 月底上线,充值上线初期配合手动流程。</div>
+<div class="pitch-line"><span class="pitch-label">口径建议:</span>对意向客户可锁单 5 月档期交付。</div>
+<div class="pitch-line">SGB 渠道对接进度见板块四。</div>
+</div>
+</div>
+
+<!-- ② Conversion -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">② Conversion — 币种兑换 <span class="release-tag">R1</span></div>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">稳定币 → 法币(USDT/USDC → USD)</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-live">已可展业</span>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">产品升级:RFQ 重构</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">4月底上线</span>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">SGB Support OTC</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">5/15上线</span>
+</div>
+
+<div class="pitch teal">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>USDT/USDC → USD 兑换能力已可展业。</div>
+<div class="pitch-line"><span class="pitch-label">产品升级:</span>RFQ 询价与成交链路重构中,4 月底上线,报价效率与执行质量提升。</div>
+</div>
+</div>
+
+<!-- ③ Payout — 稳定币 (保留联调) -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">③ Payout — 稳定币 <span class="release-tag">R1</span></div>
+<span class="card-badge status-integrating">联调中 · PalmPay</span>
+</div>
+<div class="pipeline-row">
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">API就绪</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">联调</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+</div>
+<div class="pitch blue">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>稳定币 Payout API 已就绪,已对接 PalmPay 客户可直接使用。</div>
+<div class="pitch-line"><span class="pitch-label">风险:</span>依赖 PalmPay 集成排期(见板块一)。</div>
+</div>
+</div>
+
+<!-- ④ Payout — 法币 (无联调) -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">④ Payout — 法币 <span class="release-tag">R2</span></div>
+<span class="card-badge status-dev">5月可展业</span>
+</div>
+<div class="pipeline-row">
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+</div>
+<div class="pitch amber">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>法币 Payout 5 月可对客展业,经 Navro 渠道出款。</div>
+<div class="pitch-line">Navro 渠道 4 月系统上线,5 月进入可展业状态。</div>
+</div>
+</div>
+
+<!-- ⑤ Collection — 稳定币收款 (Invoice 无联调, Checkout 有联调) -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">⑤ Collection — 稳定币收款 <span class="release-tag">R1 / R2</span></div>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">Invoice(开票收款)</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">6月中上线</span>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">Checkout 收银台</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">联调</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">4月底上线</span>
+</div>
+
+<div class="pitch amber">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>Checkout 4 月底上线,Invoice 6 月中上线。</div>
+<div class="pitch-line"><span class="pitch-label">状态:</span>Invoice 当前在开发阶段,因资源和优先级调整,5 月继续推进。</div>
+<div class="pitch-line"><span class="pitch-label">口径建议:</span>短期客户优先推 Checkout;需开票场景可锁单 6 月。</div>
+<div class="pitch-line">两种方案可作为互补的产品组合向客户介绍。</div>
+</div>
+</div>
+
+<!-- ⑥ ObitaPocket (无联调) -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">⑥ ObitaPocket <span class="release-tag">非R1-R3核心</span></div>
+<span class="card-badge status-dev">6月可展业</span>
+</div>
+<div class="pipeline-row">
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+</div>
+<div class="pitch amber">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>ObitaPocket 当前在开发阶段,因资源和优先级调整暂停。</div>
+</div>
+</div>
+
+<!-- ⑦ U 卡 (无联调) -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">⑦ U 卡 <span class="release-tag">非R1-R3核心</span></div>
+<span class="card-badge status-dev">6月上线</span>
+</div>
+<div class="pipeline-row">
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+</div>
+<div class="pitch amber">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>U 卡计划 6 月系统上线。</div>
+<div class="pitch-line">对接的 Wirex 渠道 6 月系统上线(见板块四)。</div>
+</div>
+</div>
+
+<!-- ⑧ Merchant Portal V2 -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">⑧ Merchant Portal V2 <span class="release-tag">R3预备</span></div>
+<span class="card-badge status-dev">计划6月上线</span>
+</div>
+<div class="pipeline-row">
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+</div>
+<div class="pitch blue">
+<div class="pitch-line"><span class="pitch-label">当前阶段:</span>PRD 阶段。</div>
+<div class="pitch-line"><span class="pitch-label">计划:</span>6 月上线。</div>
+</div>
+</div>
+
+<!-- 板块三:基建能力 -->
+<div class="section-header sec-2">板块三 · 基建能力(对内)</div>
+
+<div class="card">
+<div class="card-header">
+<div class="card-title">基建能力 · 7 条主线</div>
+</div>
+<div class="grid">
+<div class="infra-item">
+<div class="name">账务系统</div>
+<span class="card-badge status-dev">4月底上线</span>
+</div>
+<div class="infra-item">
+<div class="name">金融交换</div>
+<span class="card-badge status-dev">4月底上线</span>
+</div>
+<div class="infra-item">
+<div class="name">支付核心</div>
+<span class="card-badge status-dev">4月底上线</span>
+</div>
+<div class="infra-item">
+<div class="name">风控系统</div>
+<span class="card-badge status-dev">4月底上线</span>
+</div>
+<div class="infra-item">
+<div class="name">渠道对账与清结算</div>
+<span class="card-badge status-integrating">5月上线</span>
+</div>
+<div class="infra-item">
+<div class="name">两码一号改造</div>
+<span class="card-badge status-integrating">5月完成</span>
+</div>
+<div class="infra-item">
+<div class="name">会员域</div>
+<span class="card-badge status-pending">5月启动并上线</span>
+</div>
+</div>
+</div>
+
+<!-- 板块四:渠道对接 -->
+<div class="section-header sec-3">板块四 · 渠道对接</div>
+
+<div class="card channel-board">
+<div class="card-header">
+<div class="card-title">支撑业务能力落地的外部渠道</div>
+</div>
+<div class="grid">
+
+<div class="channel-item amber">
+<div class="channel-header">
+<div class="channel-name">Navro</div>
+<span class="card-badge status-dev">4月系统上线</span>
+</div>
+<div class="channel-info">
+<div>用途:法币 Payout 出金</div>
+<div>状态:渠道对接中</div>
+<div>影响:能力 ④ 5 月可展业</div>
+<div>发布归属:R2</div>
+</div>
+</div>
+
+<div class="channel-item amber">
+<div class="channel-header">
+<div class="channel-name">SGB</div>
+<span class="card-badge status-dev">对接中</span>
+</div>
+<div class="channel-info">
+<div>用途:法币充值</div>
+<div>状态:渠道对接中</div>
+<div>影响:能力 ① 4 月底上线</div>
+<div>发布归属:R2</div>
+</div>
+</div>
+
+<div class="channel-item amber">
+<div class="channel-header">
+<div class="channel-name">Wirex</div>
+<span class="card-badge status-dev">6月系统上线</span>
+</div>
+<div class="channel-info">
+<div>用途:U 卡发卡</div>
+<div>状态:渠道对接中</div>
+<div>影响:能力 ⑦ 6 月上线</div>
+<div>发布归属:非R1-R3核心</div>
+</div>
+</div>
+
+<div class="channel-item purple">
+<div class="channel-header">
+<div class="channel-name">OSL</div>
+<span class="card-badge status-pending">等待对接</span>
+</div>
+<div class="channel-info">
+<div>用途:数币托管</div>
+<div>状态:等待对接启动</div>
+<div>发布归属:非R1-R3核心</div>
+</div>
+</div>
+
+<div class="channel-item purple">
+<div class="channel-header">
+<div class="channel-name">Hashkey</div>
+<span class="card-badge status-pending">等待对接</span>
+</div>
+<div class="channel-info">
+<div>用途:数币托管</div>
+<div>状态:等待对接启动</div>
+<div>发布归属:非R1-R3核心</div>
+</div>
+</div>
+
+<div class="channel-item purple focus no-corner-tag">
+<div class="channel-header">
+<div class="channel-name">Velafi</div>
+<span class="card-badge status-pending">等待对接</span>
+</div>
+<div class="channel-info">
+<div class="channel-kv"><span class="k">用途</span><span class="v">兑换LP</span></div>
+<div class="channel-kv"><span class="k">状态</span><span class="v">本周更新为高优先级，暂定5月系统上线</span></div>
+<div class="channel-kv"><span class="k">动作</span><span class="v">FI部门开始启动商务流程</span></div>
+<div class="channel-tags">
+<span class="channel-mini-tag key">本周更新</span>
+<span class="channel-mini-tag key">高优先级</span>
+<span class="channel-mini-tag">发布归属 R3</span>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -823,34 +1224,38 @@
 <li>稳定币 Payout(已对接 PalmPay 客户)</li>
 <li>Conversion 稳定币 → 法币(USDT/USDC → USD)</li>
 </ul>
-<h4>4 月底可交付</h4>
+<h4>R1(5/6)交付</h4>
 <ul>
-<li>法币充值(SGB)+ 法币提现</li>
-<li>Checkout 稳定币收银台</li>
+<li>OTC 业务现状可用(充值 → 兑换 → 提现)</li>
+<li>稳定币 Payout 完整可用</li>
+<li>稳定币 Checkout 完整可用</li>
 <li>Conversion RFQ 重构升级</li>
 </ul>
-<h4>5 月可展业</h4>
+<h4>R2(待评估)交付</h4>
 <ul>
-<li>法币 Payout(Navro)</li>
+<li>优先级提升！SGB 渠道在 OTC 业务上可用，支持法币VA开户、充值、提现（5/15交付）</li>
+<li>法币 Payout(Navro)（暂定5月底交付，会尽量提前）</li>
+<li>稳定币 Invoice（暂定5月底交付）</li>
 </ul>
-<h4>6 月交付</h4>
+<h4>R3（待评估）交付</h4>
 <ul>
-<li>Invoice 开票收款</li>
-<li>ObitaPocket</li>
-<li>U 卡(Wirex)</li>
+<li>端到端付款:小币种收款 → 香港 offramp</li>
+</ul>
+<h4>后续节奏</h4>
+<ul>
+<li>ObitaPocket、U 卡(Wirex)6 月</li>
 </ul>
 </div>
 
 <div class="summary-box risk">
-<h3>关键风险 / 依赖</h3>
+<h3>关键风险 / 阻断项（R1-R3）</h3>
 <ul>
-<li>PalmPay 集成排期<br><span class="sub">→ 影响稳定币 Payout 落地</span></li>
-<li>Navro 渠道对接进度<br><span class="sub">→ 影响法币 Payout 5 月展业</span></li>
-<li>SGB 渠道对接进度<br><span class="sub">→ 影响法币充值 4 月底上线</span></li>
-<li>Wirex 渠道对接进度<br><span class="sub">→ 影响 U 卡 6 月上线</span></li>
-<li>OSL / Hashkey 托管对接<br><span class="sub">尚未启动,需 BD 推动</span></li>
-<li>多能力扎堆 4 月底,交付压力大</li>
-<li>会员域 5 月启动并上线,周期紧</li>
+<li>PalmPay 集成排期<br><span class="sub">→ 直接影响 R1 稳定币 Payout 完整可用</span></li>
+<li>Checkout 稳定性与上线质量<br><span class="sub">→ 直接影响 R1 业务完整可用口径</span></li>
+<li>SGB 渠道进度<br><span class="sub">→ 直接影响 R2 的 OTC 可用目标</span></li>
+<li>Navro 渠道进度<br><span class="sub">→ 直接影响 R2 法币 Payout 可用</span></li>
+<li>Invoice 交付节奏（5月继续推进）<br><span class="sub">→ 直接影响 R2 交付承诺</span></li>
+<li>Velafi+ 渠道接入范围与技术方案<br><span class="sub">→ 直接影响 R3 端到端付款能力闭环</span></li>
 </ul>
 </div>
 
