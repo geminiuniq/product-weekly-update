@@ -211,6 +211,36 @@
     box-shadow: 0 0 0 2px rgba(239, 159, 39, 0.18), 0 10px 22px rgba(45, 54, 78, 0.1);
     position: relative;
   }
+  .channel-item.weekly-highlight {
+    box-shadow:
+      0 16px 34px rgba(20, 46, 82, 0.2),
+      0 0 0 1px rgba(29, 158, 117, 0.12),
+      0 0 28px rgba(29, 158, 117, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.36);
+    transform: translateY(0);
+    z-index: 1;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    position: relative;
+    padding-left: 18px;
+  }
+  .channel-item.weekly-highlight::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(29, 158, 117, 0.92), rgba(29, 158, 117, 0.52));
+  }
+  .channel-item.weekly-highlight:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 20px 40px rgba(20, 46, 82, 0.24),
+      0 0 0 1px rgba(29, 158, 117, 0.16),
+      0 0 36px rgba(29, 158, 117, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  }
   .channel-board {
     border: 1.5px solid rgba(55, 138, 221, 0.28);
     box-shadow: 0 12px 28px rgba(20, 46, 82, 0.1);
@@ -250,6 +280,16 @@
     }
     .channel-item.focus {
       box-shadow: 0 0 0 2px rgba(239, 159, 39, 0.32), 0 12px 24px rgba(0, 0, 0, 0.36);
+    }
+    .channel-item.weekly-highlight {
+      box-shadow:
+        0 18px 34px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(95, 225, 180, 0.22),
+        0 0 32px rgba(95, 225, 180, 0.22),
+        inset 0 1px 0 rgba(195, 248, 232, 0.16);
+    }
+    .channel-item.weekly-highlight::before {
+      background: linear-gradient(180deg, rgba(95, 225, 180, 0.95), rgba(95, 225, 180, 0.58));
     }
     .channel-board .channel-item.focus::after {
       background: rgba(239, 159, 39, 0.24);
@@ -346,6 +386,30 @@
     border-color: rgba(186, 117, 23, 0.35);
     color: #5A3507;
     font-weight: 700;
+  }
+  .doc-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .doc-icon {
+    width: 12px;
+    height: 14px;
+    border-radius: 2px;
+    border: 1px solid currentColor;
+    position: relative;
+    opacity: 0.86;
+  }
+  .doc-icon::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 3px;
+    height: 1px;
+    background: currentColor;
+    box-shadow: 0 3px 0 currentColor, 0 6px 0 currentColor;
+    opacity: 0.72;
   }
   @media (prefers-color-scheme: dark) {
     .merchant-tag {
@@ -481,6 +545,54 @@
   }
   .release-item.amber li { color: #6B421E; }
   .release-item.purple li { color: #31307C; }
+  .release-item.weekly-highlight {
+    border-width: 2px;
+    box-shadow:
+      0 16px 34px rgba(18, 31, 55, 0.2),
+      0 0 0 1px rgba(29, 158, 117, 0.12),
+      0 0 30px rgba(29, 158, 117, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    transform: translateY(0);
+    z-index: 1;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    padding-left: 22px;
+  }
+  .release-item.weekly-highlight::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 4px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(29, 158, 117, 0.92), rgba(29, 158, 117, 0.52));
+  }
+  .release-item.weekly-highlight:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 22px 44px rgba(18, 31, 55, 0.26),
+      0 0 0 1px rgba(29, 158, 117, 0.16),
+      0 0 38px rgba(29, 158, 117, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.46);
+  }
+  .top-with-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .update-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(29, 158, 117, 0.16);
+    border: 1px solid rgba(15, 110, 86, 0.35);
+    color: #0C5B48;
+    white-space: nowrap;
+  }
   .release-item .meta-line {
     margin-top: 12px;
     font-size: 12px;
@@ -516,6 +628,21 @@
     .release-item li { background: rgba(255,255,255,0.08); color: #D7F2E9; }
     .release-item.amber li { color: #FFE2BF; }
     .release-item.purple li { color: #E3E0FF; }
+    .release-item.weekly-highlight {
+      box-shadow:
+        0 18px 36px rgba(0, 0, 0, 0.44),
+        0 0 0 1px rgba(95, 225, 180, 0.24),
+        0 0 34px rgba(95, 225, 180, 0.24),
+        inset 0 1px 0 rgba(195, 248, 232, 0.18);
+    }
+    .release-item.weekly-highlight::before {
+      background: linear-gradient(180deg, rgba(95, 225, 180, 0.95), rgba(95, 225, 180, 0.58));
+    }
+    .update-tag {
+      background: rgba(29, 158, 117, 0.28);
+      border-color: rgba(95, 225, 180, 0.5);
+      color: #C7F8E8;
+    }
     .release-item .meta-line { color: #B8BDC9; }
   }
   @media (prefers-color-scheme: dark) {
@@ -577,6 +704,100 @@
       background: linear-gradient(135deg, #12735A 0%, #1E8E72 100%);
       color: #F6FFFC;
     }
+  }
+
+  /* Night mode fallback for hosts that do not expose prefers-color-scheme reliably */
+  :is(html.dark, html.night, html[data-theme="dark"], body.dark, body.night-mode, body[data-theme="dark"]) {
+    color-scheme: dark;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) body,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) {
+    background:
+      radial-gradient(circle at 12% -12%, rgba(83, 141, 214, 0.24), transparent 34%),
+      radial-gradient(circle at 88% 0%, rgba(140, 123, 214, 0.2), transparent 30%),
+      #14151A;
+    color: #E8EAF5;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .section-header.sec-1,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .section-header.sec-1 {
+    background: rgba(127, 119, 221, 0.22);
+    color: #D7D4FF;
+    border: 1px solid rgba(160, 154, 231, 0.35);
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .section-header.sec-2,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .section-header.sec-2 {
+    background: rgba(212, 83, 126, 0.2);
+    color: #FFD5E4;
+    border: 1px solid rgba(222, 126, 161, 0.34);
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .section-header.sec-3,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .section-header.sec-3 {
+    background: rgba(55, 138, 221, 0.22);
+    color: #CFE8FF;
+    border: 1px solid rgba(105, 168, 245, 0.34);
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .card,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .card {
+    background: rgba(36, 39, 48, 0.9);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.34);
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .card-title,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .card-title {
+    color: #EDF1FF;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .sub-line-name,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .sub-line-name {
+    color: #E4E8F8;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .step-label,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .step-label {
+    color: #C8D0E7;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .pipeline-steps::before,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .pipeline-steps::before {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .pitch.teal,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .pitch.teal {
+    background: rgba(29, 158, 117, 0.24);
+    color: #C6F7E7;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .pitch.amber,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .pitch.amber {
+    background: rgba(239, 159, 39, 0.22);
+    color: #FFE6B9;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .pitch.blue,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .pitch.blue {
+    background: rgba(55, 138, 221, 0.24);
+    color: #D7EBFF;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .pitch .pitch-label,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .pitch .pitch-label {
+    color: #F5F8FF;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .merchant-tag-label,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .merchant-tag-label {
+    color: #D2DAEE;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .merchant-tag,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .merchant-tag {
+    background: rgba(55, 138, 221, 0.24);
+    border-color: rgba(95, 167, 240, 0.5);
+    color: #D8EDFF;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .merchant-tag.key,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .merchant-tag.key {
+    background: rgba(239, 159, 39, 0.28);
+    border-color: rgba(239, 159, 39, 0.54);
+    color: #FFE5BE;
+  }
+  :is(html.dark, html.night, html[data-theme="dark"]) .update-tag,
+  :is(body.dark, body.night-mode, body[data-theme="dark"]) .update-tag {
+    background: rgba(29, 158, 117, 0.28);
+    border-color: rgba(95, 225, 180, 0.5);
+    color: #C7F8E8;
   }
 
   .footer {
@@ -687,9 +908,12 @@
 
 <div class="release-head">接下来三次发布计划</div>
 <div class="release-grid">
-<div class="release-item green">
+<div class="release-item green weekly-highlight">
 <div class="top">
+<div class="top-with-tag">
 <h3>第一次发布</h3>
+<span class="update-tag">本周更新</span>
+</div>
 <div class="eta">5/6 左右</div>
 </div>
 <ul>
@@ -698,6 +922,7 @@
 <li>稳定币 Checkout 业务完整可用</li>
 </ul>
 <div class="meta-line">原 4/30 目标推迟约一周</div>
+<div class="meta-line">进展进行中：按本周节奏持续推进交付闭环</div>
 </div>
 <div class="release-item amber">
 <div class="top">
@@ -725,8 +950,34 @@
 <!-- 板块一:服务商户 -->
 <div class="section-header sec-3">板块一 · 服务商户</div>
 
-<div class="card">
 <div class="grid">
+
+<div class="channel-item teal weekly-highlight">
+<div class="channel-header">
+<div class="top-with-tag">
+<div class="channel-name">汇金</div>
+<span class="update-tag">本周更新</span>
+</div>
+<span class="card-badge status-integrating">方案完成</span>
+</div>
+<div class="channel-info">
+<div class="merchant-tag-block">
+<span class="merchant-tag-label">能力</span>
+<div class="merchant-tags">
+<span class="merchant-tag">稳定币收款</span>
+<span class="merchant-tag">Offramp</span>
+<span class="merchant-tag key">全API对接（重点）</span>
+</div>
+</div>
+<div class="merchant-tag-block">
+<span class="merchant-tag-label">交付</span>
+<div class="merchant-tags">
+<span class="merchant-tag doc-tag"><span class="doc-icon"></span>方案</span>
+<span class="merchant-tag doc-tag"><span class="doc-icon"></span>API文档</span>
+</div>
+</div>
+</div>
+</div>
 
 <div class="channel-item teal">
 <div class="channel-header">
@@ -802,24 +1053,6 @@
 </div>
 </div>
 
-<div class="channel-item teal focus">
-<div class="channel-header">
-<div class="channel-name">汇金（MAIZHENG）</div>
-<span class="card-badge status-pending">规划中</span>
-</div>
-<div class="channel-info">
-<div class="merchant-tag-block">
-<span class="merchant-tag-label">能力</span>
-<div class="merchant-tags">
-<span class="merchant-tag">稳定币收款</span>
-<span class="merchant-tag">Offramp</span>
-<span class="merchant-tag key">全API对接（重点）</span>
-</div>
-</div>
-</div>
-</div>
-
-</div>
 </div>
 
 <!-- 板块二:业务支付产品 -->
@@ -1015,53 +1248,10 @@
 </div>
 </div>
 
-<!-- ⑥ ObitaPocket (无联调) -->
+<!-- ⑥ Merchant Portal V2 -->
 <div class="card">
 <div class="card-header">
-<div class="card-title">⑥ ObitaPocket <span class="release-tag">非R1-R3核心</span></div>
-<span class="card-badge status-dev">6月可展业</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>ObitaPocket 当前在开发阶段,因资源和优先级调整暂停。</div>
-</div>
-</div>
-
-<!-- ⑦ U 卡 (无联调) -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">⑦ U 卡 <span class="release-tag">非R1-R3核心</span></div>
-<span class="card-badge status-dev">6月上线</span>
-</div>
-<div class="pipeline-row">
-<div class="pipeline-steps">
-<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">需求</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">PRD</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
-<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
-</div>
-</div>
-<div class="pitch amber">
-<div class="pitch-line"><span class="pitch-label">对外口径:</span>U 卡计划 6 月系统上线。</div>
-<div class="pitch-line">对接的 Wirex 渠道 6 月系统上线(见板块四)。</div>
-</div>
-</div>
-
-<!-- ⑧ Merchant Portal V2 -->
-<div class="card">
-<div class="card-header">
-<div class="card-title">⑧ Merchant Portal V2 <span class="release-tag">R3预备</span></div>
+<div class="card-title">⑥ Merchant Portal V2 <span class="release-tag">R3预备</span></div>
 <span class="card-badge status-dev">计划6月上线</span>
 </div>
 <div class="pipeline-row">
@@ -1077,6 +1267,45 @@
 <div class="pitch blue">
 <div class="pitch-line"><span class="pitch-label">当前阶段:</span>PRD 阶段。</div>
 <div class="pitch-line"><span class="pitch-label">计划:</span>6 月上线。</div>
+</div>
+</div>
+
+<!-- ⑦ C端操作台 -->
+<div class="card">
+<div class="card-header">
+<div class="card-title">⑦ C端操作台 <span class="release-tag">非R1-R3核心</span></div>
+<span class="card-badge status-dev">6月上线</span>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">ObitaPocket</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot done"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">6月可展业</span>
+</div>
+
+<div class="sub-line">
+<div class="sub-line-name">U 卡</div>
+<div class="pipeline-steps">
+<div class="pipeline-step"><div class="step-dot active"></div><div class="step-label">需求</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">PRD</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">开发</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">上线</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">风控合规法务确认</div></div>
+<div class="pipeline-step"><div class="step-dot waiting"></div><div class="step-label">可展业</div></div>
+</div>
+<span class="card-badge status-dev">6月上线</span>
+</div>
+
+<div class="pitch amber">
+<div class="pitch-line"><span class="pitch-label">对外口径:</span>ObitaPocket 当前在开发阶段,因资源和优先级调整暂停；U 卡计划 6 月系统上线。</div>
+<div class="pitch-line">对接的 Wirex 渠道 6 月系统上线(见板块四)。</div>
 </div>
 </div>
 
@@ -1182,11 +1411,11 @@
 <div class="channel-item purple">
 <div class="channel-header">
 <div class="channel-name">Hashkey</div>
-<span class="card-badge status-pending">等待对接</span>
+<span class="card-badge status-dev">6月系统对接</span>
 </div>
 <div class="channel-info">
 <div>用途:数币托管</div>
-<div>状态:等待对接启动</div>
+<div>状态:6月系统对接</div>
 <div>发布归属:非R1-R3核心</div>
 </div>
 </div>
@@ -1201,7 +1430,6 @@
 <div class="channel-kv"><span class="k">状态</span><span class="v">本周更新为高优先级，暂定5月系统上线</span></div>
 <div class="channel-kv"><span class="k">动作</span><span class="v">FI部门开始启动商务流程</span></div>
 <div class="channel-tags">
-<span class="channel-mini-tag key">本周更新</span>
 <span class="channel-mini-tag key">高优先级</span>
 <span class="channel-mini-tag">发布归属 R3</span>
 </div>
